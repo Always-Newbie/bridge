@@ -5,7 +5,7 @@ Bridge program between RSS and Slack or Discord webhook written in a pure golang
 ### About
 
 "bridge" is RSS feeds reader.  
-This app is written a pure Golang.    
+This app written a pure Golang.    
 And RSS feeds convert into json, and execute HTTP POST your team (Discord or Slack)webhook.
 
 ### Support webhooks
