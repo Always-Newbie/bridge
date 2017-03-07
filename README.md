@@ -41,7 +41,7 @@ go build
   --・`post` is can do post flag.  
   ・`feeds` is RSS feeds setting.  
   --・`url` is RSS feed url.  
-  --・`timestamp` is latest readed UTC+0000 timestamp (YYYY/MM/DD HH24:MI:SS)  
+  --・`timestamp` is latest read UTC+0000 timestamp (YYYY/MM/DD HH24:MI:SS)  
   --・`read` is can do read flag.
 
 ```json
