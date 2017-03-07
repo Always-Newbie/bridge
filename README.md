@@ -12,6 +12,12 @@ And RSS feeds convert into json, and execute HTTP POST your team (Discord or Sla
 ・Slack  
 ・Discord
 
+### Install  
+
+```
+go get -u github.com/Always-Newbie/bridge　　
+```
+
 ### How to use
 
 1.Please preparation for settings.json  
