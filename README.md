@@ -1,4 +1,5 @@
 # bridge
+[![Go Report Card](https://goreportcard.com/badge/github.com/Always-Newbie/bridge)](https://goreportcard.com/report/github.com/Always-Newbie/bridge)  
 Bridge program between RSS and webhook written in a pure golang
 
 ### About
