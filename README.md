@@ -19,6 +19,13 @@ go get -u github.com/Always-Newbie/bridge　　
 ```
 
 ### How to use
+0.Please "go build"　　
+
+```
+//cd %gopath%/src/github.com/Always-Newbie/bridge
+
+go build
+```
 
 1.Please preparation for settings.json  
 ・file encoding is "UTF-8".  
@@ -65,7 +72,7 @@ go get -u github.com/Always-Newbie/bridge　　
 
 2.Execute command
 ```
-$ ./binnaryName [option:-config=(setting file path. default is "./settings.json")]
+$ ./bridge [option:-config=(setting file path. default is "./settings.json")]
 ```
 
 3.Please check your Slack or Discord channel
