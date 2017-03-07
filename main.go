@@ -384,36 +384,35 @@ https://api.slack.com/docs/messages/builder?msg=%7B%22attachments%22%3A%5B%7B%22
 /*-----------------------------*/
 // Slack webhook strucuture
 type SlackWebhook struct {
-	Text        string             `json:"text"`
-	UserName    string             `json:"username"`
-	IconEmoji   string             `json:"icon_emoji"`
-	IconUrl     string             `json:"icon_url"`
-	Channel     string             `json:"channel"`
-	Attachments []*SlackAttachment `json:"attachments"`
+	Text        string             `json:"text,omitempty"`
+	UserName    string             `json:"username,omitempty"`
+	IconEmoji   string             `json:"icon_emoji,omitempty"`
+	IconUrl     string             `json:"icon_url,omitempty"`
+	Attachments []*SlackAttachment `json:"attachments,omitempty"`
 }
 
 type SlackAttachment struct {
-	Fallback   string                  `json:"fallback"`
-	Color      string                  `json:"color"`   //HEX. (ex: #FFFFFF)
-	Pretext    string                  `json:"pretext"` //text position.
-	AuthorName string                  `json:"author_name"`
-	AuthorLink string                  `json:"author_link"`
-	AuthorIcon string                  `json:"author_icon"`
-	Title      string                  `json:"title"`
-	TitleLink  string                  `json:"title_link"`
-	Text       string                  `json:"text"`
-	Fields     []*SlackAttachmentField `json:"fields"`
-	ImageUrl   string                  `json:"image_url"`
-	ThumbUrl   string                  `json:"thumb_url"`
-	Footer     string                  `json:"footer"`
-	FooterIcon string                  `json:"footer_icon"`
-	Ts         int                     `json:"ts"` //timestamp(number)
+	Fallback   string                  `json:"fallback,omitempty"`
+	Color      string                  `json:"color,omitempty"`   //HEX. (ex: #FFFFFF)
+	Pretext    string                  `json:"pretext,omitempty"` //text position.
+	AuthorName string                  `json:"author_name,omitempty"`
+	AuthorLink string                  `json:"author_link,omitempty"`
+	AuthorIcon string                  `json:"author_icon,omitempty"`
+	Title      string                  `json:"title,omitempty"`
+	TitleLink  string                  `json:"title_link,omitempty"`
+	Text       string                  `json:"text,omitempty"`
+	Fields     []*SlackAttachmentField `json:"fields,omitempty"`
+	ImageUrl   string                  `json:"image_url,omitempty"`
+	ThumbUrl   string                  `json:"thumb_url,omitempty"`
+	Footer     string                  `json:"footer,omitempty"`
+	FooterIcon string                  `json:"footer_icon,omitempty"`
+	Ts         int                     `json:"ts,omitempty"` //timestamp(number)
 }
 
 type SlackAttachmentField struct {
-	Title string `json:"title"`
-	Value string `json:"value"`
-	Short bool   `json:"short"` //display inline or block
+	Title string `json:"title,omitempty"`
+	Value string `json:"value,omitempty"`
+	Short bool   `json:"short,omitempty"` //display inline or block
 }
 
 // TODO:support change color
