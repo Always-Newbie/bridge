@@ -451,7 +451,7 @@ type DeliveryList struct {
 
 type FeedList struct {
 	Url       string `json:"url"`       //RSS feed url
-	Timestamp string `json:"timestamp"` //latest readed timestamp (YYYY/MM/DD HH21:MI:DD)
+	Timestamp string `json:"timestamp"` //latest read timestamp (YYYY/MM/DD HH21:MI:DD)
 	Read      bool   `json:"read"`      //using RSS feed url
 }
 /*-----------------------------*/
@@ -484,7 +484,7 @@ func main() {
 }
 
 // Read RSS Feed
-func readFeed(url string, latestReaded time.Time, webhookUrl string, webhookType string, username string, icon string) {
+func readFeed(url string, latestRead time.Time, webhookUrl string, webhookType string, username string, icon string) {
 
 	xmlStr := getXml(url)
 
@@ -499,11 +499,11 @@ func readFeed(url string, latestReaded time.Time, webhookUrl string, webhookType
 		switch webhookType {
 		case "discord":
 			d := new(DiscordWebhook)
-			d.parseRss1(data, latestReaded, username, icon)
+			d.parseRss1(data, latestRead, username, icon)
 			postWebhook(webhookUrl, webhookType, d.marshal())
 		case "slack":
 			s := new(SlackWebhook)
-			s.parseRss1(data, latestReaded, username, icon)
+			s.parseRss1(data, latestRead, username, icon)
 			postWebhook(webhookUrl, webhookType, s.marshal())
 		}
 	}
@@ -519,11 +519,11 @@ func readFeed(url string, latestReaded time.Time, webhookUrl string, webhookType
 		switch webhookType {
 		case "discord":
 			d := new(DiscordWebhook)
-			d.parseRss2(data, latestReaded, username, icon)
+			d.parseRss2(data, latestRead, username, icon)
 			postWebhook(webhookUrl, webhookType, d.marshal())
 		case "slack":
 			s := new(SlackWebhook)
-			s.parseRss2(data, latestReaded, username, icon)
+			s.parseRss2(data, latestRead, username, icon)
 			postWebhook(webhookUrl, webhookType, s.marshal())
 		}
 	}
@@ -539,11 +539,11 @@ func readFeed(url string, latestReaded time.Time, webhookUrl string, webhookType
 		switch webhookType {
 		case "discord":
 			d := new(DiscordWebhook)
-			d.parseAtom(data, latestReaded, username, icon)
+			d.parseAtom(data, latestRead, username, icon)
 			postWebhook(webhookUrl, webhookType, d.marshal())
 		case "slack":
 			s := new(SlackWebhook)
-			s.parseAtom(data, latestReaded, username, icon)
+			s.parseAtom(data, latestRead, username, icon)
 			postWebhook(webhookUrl, webhookType, s.marshal())
 		}
 	}
@@ -581,10 +581,10 @@ func purgeHTML(eval string) (ret string) {
 }
 
 // Parse RSS1.0 feed for DiscordWebhook structure
-func (d *DiscordWebhook) parseRss1(data *Rss1, latestReaded time.Time, username string, icon string) {
+func (d *DiscordWebhook) parseRss1(data *Rss1, latestRead time.Time, username string, icon string) {
 	for idx, _ := range data.Item {
 		thisEmbedPublished, _ := time.Parse(YYYYMMDDHH24MISS, dateFormat(data.Item[idx].Date))
-		if latestReaded.Before(thisEmbedPublished) {
+		if latestRead.Before(thisEmbedPublished) {
 			if d.Content == "" {
 				d.UserName = username
 				d.AvatarUrl = icon
@@ -606,10 +606,10 @@ func (d *DiscordWebhook) parseRss1(data *Rss1, latestReaded time.Time, username 
 }
 
 // Parse RSS2.0 feed for DiscordWebhook structure
-func (d *DiscordWebhook) parseRss2(data *Rss2, latestReaded time.Time, username string, icon string) {
+func (d *DiscordWebhook) parseRss2(data *Rss2, latestRead time.Time, username string, icon string) {
 	for idx, _ := range data.Channel.Item {
 		thisEmbedPublished, _ := time.Parse(YYYYMMDDHH24MISS, dateFormat(data.Channel.Item[idx].PubDate))
-		if latestReaded.Before(thisEmbedPublished) {
+		if latestRead.Before(thisEmbedPublished) {
 			if d.Content == "" {
 				d.UserName = username
 				d.AvatarUrl = icon
@@ -631,10 +631,10 @@ func (d *DiscordWebhook) parseRss2(data *Rss2, latestReaded time.Time, username 
 }
 
 // Parse Atom feed for DiscordWebhook structure
-func (d *DiscordWebhook) parseAtom(data *Atom, latestReaded time.Time, username string, icon string) {
+func (d *DiscordWebhook) parseAtom(data *Atom, latestRead time.Time, username string, icon string) {
 	for idx, _ := range data.Entry {
 		thisEmbedPublished, _ := time.Parse(YYYYMMDDHH24MISS, dateFormat(data.Entry[idx].Updated))
-		if latestReaded.Before(thisEmbedPublished) {
+		if latestRead.Before(thisEmbedPublished) {
 			if d.Content == "" {
 				d.UserName = username
 				d.AvatarUrl = icon
@@ -656,10 +656,10 @@ func (d *DiscordWebhook) parseAtom(data *Atom, latestReaded time.Time, username 
 }
 
 // Parse RSS1.0 feed for SlackWebhook structure
-func (s *SlackWebhook) parseRss1(data *Rss1, latestReaded time.Time, username string, icon string) {
+func (s *SlackWebhook) parseRss1(data *Rss1, latestRead time.Time, username string, icon string) {
 	for idx, _ := range data.Item {
 		thisEmbedPublished, _ := time.Parse(YYYYMMDDHH24MISS, dateFormat(data.Item[idx].Date))
-		if latestReaded.Before(thisEmbedPublished) {
+		if latestRead.Before(thisEmbedPublished) {
 			if s.Text == "" {
 				s.UserName = username
 				s.IconEmoji = icon
@@ -678,10 +678,10 @@ func (s *SlackWebhook) parseRss1(data *Rss1, latestReaded time.Time, username st
 }
 
 // Parse RSS2.0 feed for SlackWebhook structure
-func (s *SlackWebhook) parseRss2(data *Rss2, latestReaded time.Time, username string, icon string) {
+func (s *SlackWebhook) parseRss2(data *Rss2, latestRead time.Time, username string, icon string) {
 	for idx, _ := range data.Channel.Item {
 		thisEmbedPublished, _ := time.Parse(YYYYMMDDHH24MISS, dateFormat(data.Channel.Item[idx].PubDate))
-		if latestReaded.Before(thisEmbedPublished) {
+		if latestRead.Before(thisEmbedPublished) {
 			if s.Text == "" {
 				s.UserName = username
 				s.IconEmoji = icon
@@ -700,10 +700,10 @@ func (s *SlackWebhook) parseRss2(data *Rss2, latestReaded time.Time, username st
 }
 
 // Parse Atom feed for SlackWebhook structure
-func (s *SlackWebhook) parseAtom(data *Atom, latestReaded time.Time, username string, icon string) {
+func (s *SlackWebhook) parseAtom(data *Atom, latestRead time.Time, username string, icon string) {
 	for idx, _ := range data.Entry {
 		thisEmbedPublished, _ := time.Parse(YYYYMMDDHH24MISS, dateFormat(data.Entry[idx].Updated))
-		if latestReaded.Before(thisEmbedPublished) {
+		if latestRead.Before(thisEmbedPublished) {
 			if s.Text == "" {
 				s.UserName = username
 				s.IconEmoji = icon
