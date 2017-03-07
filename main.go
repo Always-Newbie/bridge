@@ -135,7 +135,7 @@ type AtomAuthor struct {
     "embeds": [
         {
             "title": "bot test",
-            "url": "https://www.google.com/",
+            "url": "https://www.example.com/",
             "description": "bot bot bot!",
             "type": "link",
             "thumbnail":{
@@ -164,10 +164,10 @@ type AtomAuthor struct {
     "embeds": [
         {
             "title" : "embed title",
-            "url" : "https://www.google.com/",
+            "url" : "https://www.example.com/",
             "author": {
                 "name": "embed author name",
-                "url": "https://www.google.com/",
+                "url": "https://www.example.com/",
                 "icon_url": "https://xxxxxxxx.png",
             },
             "description": "[masking url text sample](https://www.google.com/)",
@@ -194,38 +194,38 @@ type AtomAuthor struct {
 // WARNING: this json is do not work
 {
     "username": "example username",
-    "avatar_url": "https://www.google.com/avatar_url.png",
+    "avatar_url": "https://www.example.com/avatar_url.png",
     "content": "Content Sample Text",
     "tts": false,
     "file":  "",
     "embeds": [
         {
             "title" : "Sample Embed Title",
-            "url" : "https://www.google.com",
+            "url" : "https://www.example.com",
             "description": "[Click here to see this text](https://www.google.com/embed_description_url)",
             "color": 15258703,
             "author": {
                 "name": "Sample Author Name",
-                "url": "https://www.google.com/author_url",
-                "icon_url": "https://www.google.com/author_icon_url.png",
+                "url": "https://www.example.com/author_url",
+                "icon_url": "https://www.example.com/author_icon_url.png",
                 "description" : "Author Description Text Example"
             },
             "thumbnail": {
-                "url": "https://www.google.com/thumbnail_url.png",
+                "url": "https://www.example.com/thumbnail_url.png",
             },
             "image": {
-                "url": "https://www.google.com/image_url.png"
+                "url": "https://www.example.com/image_url.png"
             },
             "video": {
-                "url": "https://www.google.com/video_url",
+                "url": "https://www.example.com/video_url",
             },
             "footer": {
                 "text": "Footer Sample Text",
-                "icon_url": "https://www.google.com/footer_icon.png"
+                "icon_url": "https://www.example.com/footer_icon.png"
             },
             "provider": {
                 "name": "Sample Provider Name",
-                "url": "http://www.google.com/provider_url"
+                "url": "http://www.example.com/provider_url"
             },
             "fields": [
                 {
@@ -241,7 +241,7 @@ type AtomAuthor struct {
             ],
             "footer": {
                 "text": "Footer Sample Text",
-                "icon_url": "https://www.google.com/footer_icon.png"
+                "icon_url": "https://www.example.com/footer_icon.png"
             }
         }
     ]
