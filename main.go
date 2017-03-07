@@ -20,8 +20,6 @@ import (
 /*-----------------------------*/
 // RSS Feeds structure
 // RSS1.0
-// Date format
-//     RFC3339     = "2006-01-02T15:04:05Z07:00"
 type Rss1 struct {
 	Channel Rss1Channel `xml:"channel"`
 	Item    []Rss1Item  `xml:"item"`
@@ -52,9 +50,6 @@ type Rss1Item struct {
 }
 
 // RSS2.0
-// pubDate format
-//    RFC1123     = "Mon, 02 Jan 2006 15:04:05 MST"
-//    RFC1123Z    = "Mon, 02 Jan 2006 15:04:05 -0700" // RFC1123 with numeric zone
 type Rss2 struct {
 	Channel Rss2Channel `xml:"channel"`
 }
@@ -84,8 +79,6 @@ type Rss2Item struct {
 }
 
 //Atom
-// Updated format
-//     RFC3339     = "2006-01-02T15:04:05Z07:00"
 type Atom struct {
 	Id       string      `xml:"id"`
 	Title    string      `xml:"title"`
