@@ -38,7 +38,7 @@ And RSS feeds convert into json, and execute HTTP POST your team (Discord or Sla
             "post": true
         },
         {
-            "url": ""https://hooks.slack.com/services/yyyyyyyyyyyyyyy",
+            "url": "https://hooks.slack.com/services/yyyyyyyyyyyyyyy",
             "username": "slack bot",
             "icon": ":crossed_swords:",
             "type": "slack",
