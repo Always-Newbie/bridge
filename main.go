@@ -468,7 +468,7 @@ func main() {
 
 	c := new(Config)
 	c.readSettingsJson()
-	t := time.Now().Format(YYYYMMDDHH24MISS)
+	t := time.Now().UTC().Format(YYYYMMDDHH24MISS)
 
 	for hooks, _ := range c.Deliveries {
 		if c.Deliveries[hooks].Post {
