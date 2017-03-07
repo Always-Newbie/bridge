@@ -6,8 +6,9 @@ Bridge program between RSS and Slack or Discord webhook written in a pure Golang
 ### About
 
 "bridge" is RSS feeds reader.  
+And RSS feeds convert into json,  
+And execute HTTP POST your team [Slack](https://slack.com/) or [Discord](https://discordapp.com/) webhook.  
 This app written a pure Golang.    
-And RSS feeds convert into json, and execute HTTP POST your team [Slack](https://slack.com/) or [Discord](https://discordapp.com/) webhook.
 
 ### Support webhooks
 
@@ -83,6 +84,14 @@ $ ./bridge [option:-config=(setting file path. default is "./settings.json")]
 
 ### Affinity Usage
 ・cron  
+```
+// crontab image
+
+$ crontab -l
+*/10 * * * * ./bridge -config=planA.json
+* 5 * * * ./bridge -config=planB.json
+* * 1 * * ./bridge -config=planC.json
+```
 
 ### Appendix: json image for Discord Webhook
 
