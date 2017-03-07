@@ -1,6 +1,6 @@
 # bridge
-[![Go Report Card](https://goreportcard.com/badge/github.com/Always-Newbie/bridge)](https://goreportcard.com/report/github.com/Always-Newbie/bridge)  
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Always-Newbie/bridge/blob/master/LICENSE)
+[![Go Report Card](https://goreportcard.com/badge/github.com/Always-Newbie/bridge)](https://goreportcard.com/report/github.com/Always-Newbie/bridge)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Always-Newbie/bridge/blob/master/LICENSE)   
 Bridge program between RSS and Slack or Discord webhook written in a pure Golang 
 
 ### About
