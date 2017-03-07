@@ -1,12 +1,13 @@
 # bridge
 [![Go Report Card](https://goreportcard.com/badge/github.com/Always-Newbie/bridge)](https://goreportcard.com/report/github.com/Always-Newbie/bridge)  
-Bridge program between RSS and Slack or Discord webhook written in a pure golang 
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Always-Newbie/bridge/blob/master/LICENSE)
+Bridge program between RSS and Slack or Discord webhook written in a pure Golang 
 
 ### About
 
 "bridge" is RSS feeds reader.  
 This app written a pure Golang.    
-And RSS feeds convert into json, and execute HTTP POST your team (Discord or Slack)webhook.
+And RSS feeds convert into json, and execute HTTP POST your team Slack or Discord webhook.
 
 ### Support webhooks
 
@@ -71,7 +72,7 @@ go build
 }
 ```
 
-2.Execute command
+2.Please execute command
 ```
 $ ./bridge [option:-config=(setting file path. default is "./settings.json")]
 ```
@@ -80,9 +81,6 @@ $ ./bridge [option:-config=(setting file path. default is "./settings.json")]
 
 ### Affinity Usage
 ・cron  
-
-### License
-MIT license.  
 
 
 Thanks for Reading :)
