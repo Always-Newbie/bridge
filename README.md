@@ -14,7 +14,7 @@ And RSS feeds convert into json, and execute HTTP POST your team (Discord or Sla
 
 ### How to use
 
-1. Please preparation for settings.json  
+1.Please preparation for settings.json  
 ・"settings.json" path is binary same directory (default settings file)  
 ・`deliveries` is webhooks setting.  
   --・`url` is webhook url.  
@@ -55,20 +55,18 @@ And RSS feeds convert into json, and execute HTTP POST your team (Discord or Sla
 }
 ```
 
-2. Execute command
+2.Execute command
 ```
 $ ./binnaryName [option:-config=(setting file path. default is "./settings.json")]
 ```
 
-3. Please check your Slack or Discord channel
+3.Please check your Slack or Discord channel
 
 ### Affinity Usage
+・cron  
 
-・cron
+### License
+MIT license.  
 
 
 Thanks for Reading :)
-
-### License
-
-MIT license.
