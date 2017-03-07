@@ -1,7 +1,7 @@
 # bridge
 [![Go Report Card](https://goreportcard.com/badge/github.com/Always-Newbie/bridge)](https://goreportcard.com/report/github.com/Always-Newbie/bridge)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Always-Newbie/bridge/blob/master/LICENSE)   
-Bridge program between RSS and Slack or Discord webhook written in a pure Golang 
+Bridge program between RSS and Slack or Discord webhook written in a pure Golang. 
 
 ### About
 
@@ -32,7 +32,7 @@ go build
 1.Please preparation for settings.json  
 ・file encoding is "UTF-8".  
 ・Grant read / write permission.  
-・"settings.json" path is binary same directory (default settings file)  
+・"settings.json" path is binary same directory. (default settings file)  
 ・`deliveries` is webhooks setting.  
   --・`url` is webhook url.  
   --・`username` is post username.  
@@ -41,7 +41,7 @@ go build
   --・`post` is can do post flag.  
   ・`feeds` is RSS feeds setting.  
   --・`url` is RSS feed url.  
-  --・`timestamp` is latest read UTC+0000 timestamp (YYYY/MM/DD HH24:MI:SS) *AUTO UPDATE!  
+  --・`timestamp` is latest read UTC+0000 timestamp. (YYYY/MM/DD HH24:MI:SS) *AUTO UPDATE!  
   --・`read` is can do read flag.
 
 ```json
@@ -84,7 +84,7 @@ $ ./bridge [option:-config=(setting file path. default is "./settings.json")]
 ### Affinity Usage
 ・cron  
 
-### Json image for Discord Webhook
+### Appendix: json image for Discord Webhook
 
 ・simple message example
 ```json
@@ -205,7 +205,7 @@ WARNING: this json is do not work
 }
 ```
 
-### Json image for Slack Webhook
+### Appendix: json image for Slack Webhook
 [Slack Webhook json sample](https://api.slack.com/docs/messages/builder?msg=%7B%22attachments%22%3A%5B%7B%22fallback%22%3A%22Required%20plain-text%20summary%20of%20the%20attachment.%22%2C%22color%22%3A%22%2336a64f%22%2C%22pretext%22%3A%22Optional%20text%20that%20appears%20above%20the%20attachment%20block%22%2C%22author_name%22%3A%22Bobby%20Tables%22%2C%22author_link%22%3A%22http%3A%2F%2Fflickr.com%2Fbobby%2F%22%2C%22author_icon%22%3A%22http%3A%2F%2Fflickr.com%2Ficons%2Fbobby.jpg%22%2C%22title%22%3A%22Slack%20API%20Documentation%22%2C%22title_link%22%3A%22https%3A%2F%2Fapi.slack.com%2F%22%2C%22text%22%3A%22Optional%20text%20that%20appears%20within%20the%20attachment%22%2C%22fields%22%3A%5B%7B%22title%22%3A%22Priority%22%2C%22value%22%3A%22High%22%2C%22short%22%3Afalse%7D%5D%2C%22image_url%22%3A%22http%3A%2F%2Fmy-website.com%2Fpath%2Fto%2Fimage.jpg%22%2C%22thumb_url%22%3A%22http%3A%2F%2Fexample.com%2Fpath%2Fto%2Fthumb.png%22%2C%22footer%22%3A%22Slack%20API%22%2C%22footer_icon%22%3A%22https%3A%2F%2Fplatform.slack-edge.com%2Fimg%2Fdefault_application_icon.png%22%2C%22ts%22%3A123456789%7D%5D%7D)
 
 ・simple
@@ -245,7 +245,5 @@ WARNING: this json is do not work
     ]
 }
 ```
-
-
 
 Thanks for Reading :)
