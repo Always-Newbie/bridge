@@ -15,6 +15,8 @@ And RSS feeds convert into json, and execute HTTP POST your team (Discord or Sla
 ### How to use
 
 1.Please preparation for settings.json  
+・file encoding is "UTF-8".  
+・Grant read / write permission.  
 ・"settings.json" path is binary same directory (default settings file)  
 ・`deliveries` is webhooks setting.  
   --・`url` is webhook url.  
