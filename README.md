@@ -22,7 +22,7 @@ go get -u github.com/Always-Newbie/bridge　　
 0.Please "go build"　　
 
 ```
-//cd %gopath%/src/github.com/Always-Newbie/bridge
+//cd $GOPATH/src/github.com/Always-Newbie/bridge
 
 go build
 ```
