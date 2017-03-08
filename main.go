@@ -411,7 +411,7 @@ func (d *DiscordWebhook) parseRss1(data *Rss1, latestRead time.Time, username st
 			if d.Content == "" {
 				d.UserName = username
 				d.AvatarUrl = icon
-				d.Content = fmt.Sprintf("%s New publish! (from: %s)\n%s", dateFormat(data.Channel.Date), purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Link))
+				d.Content = fmt.Sprintf("%s(UTC+0000) New publish! (from: %s)\n%s", dateFormat(data.Channel.Date), purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Link))
 			}
 			emb := new(Embed)
 			emb.Title = purgeHTML(data.Item[idx].Title)
@@ -420,7 +420,7 @@ func (d *DiscordWebhook) parseRss1(data *Rss1, latestRead time.Time, username st
 			emb.Color = D_INFO
 
 			foot := new(Footer)
-			foot.Text = fmt.Sprintf("%s\n%s\n%s", dateFormat(data.Item[idx].Date), purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Description))
+			foot.Text = fmt.Sprintf("%s(UTC+0000)\n%s\n%s", dateFormat(data.Item[idx].Date), purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Description))
 			emb.Footers = foot
 
 			d.Embeds = append(d.Embeds, emb)
@@ -436,7 +436,7 @@ func (d *DiscordWebhook) parseRss2(data *Rss2, latestRead time.Time, username st
 			if d.Content == "" {
 				d.UserName = username
 				d.AvatarUrl = icon
-				d.Content = fmt.Sprintf("%s New publish! (from: %s)\n%s", dateFormat(data.Channel.PubDate), purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Link))
+				d.Content = fmt.Sprintf("%s(UTC+0000) New publish! (from: %s)\n%s", dateFormat(data.Channel.PubDate), purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Link))
 			}
 			emb := new(Embed)
 			emb.Title = purgeHTML(data.Channel.Item[idx].Title)
@@ -445,7 +445,7 @@ func (d *DiscordWebhook) parseRss2(data *Rss2, latestRead time.Time, username st
 			emb.Color = D_INFO
 
 			foot := new(Footer)
-			foot.Text = fmt.Sprintf("%s\n%s\n%s\n%s", dateFormat(data.Channel.Item[idx].PubDate), purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Description), purgeHTML(data.Channel.Creator))
+			foot.Text = fmt.Sprintf("%s(UTC+0000)\n%s\n%s\n%s", dateFormat(data.Channel.Item[idx].PubDate), purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Description), purgeHTML(data.Channel.Creator))
 			emb.Footers = foot
 
 			d.Embeds = append(d.Embeds, emb)
@@ -461,7 +461,7 @@ func (d *DiscordWebhook) parseAtom(data *Atom, latestRead time.Time, username st
 			if d.Content == "" {
 				d.UserName = username
 				d.AvatarUrl = icon
-				d.Content = fmt.Sprintf("%s New publish! (from: %s)\n%s", dateFormat(data.Updated), purgeHTML(data.Title), purgeHTML(data.Author.Url))
+				d.Content = fmt.Sprintf("%s(UTC+0000) New publish! (from: %s)\n%s", dateFormat(data.Updated), purgeHTML(data.Title), purgeHTML(data.Author.Url))
 			}
 			emb := new(Embed)
 			emb.Title = purgeHTML(data.Entry[idx].Title)
@@ -470,7 +470,7 @@ func (d *DiscordWebhook) parseAtom(data *Atom, latestRead time.Time, username st
 			emb.Color = D_INFO
 
 			foot := new(Footer)
-			foot.Text = fmt.Sprintf("%s\n%s\n%s", dateFormat(data.Entry[idx].Updated), purgeHTML(data.Title), purgeHTML(data.Subtitle))
+			foot.Text = fmt.Sprintf("%s(UTC+0000)\n%s\n%s", dateFormat(data.Entry[idx].Updated), purgeHTML(data.Title), purgeHTML(data.Subtitle))
 			emb.Footers = foot
 
 			d.Embeds = append(d.Embeds, emb)
@@ -486,14 +486,14 @@ func (s *SlackWebhook) parseRss1(data *Rss1, latestRead time.Time, username stri
 			if s.Text == "" {
 				s.UserName = username
 				s.IconEmoji = icon
-				s.Text = fmt.Sprintf("%s New publish! (from: %s)\n%s", dateFormat(data.Channel.Date), purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Link))
+				s.Text = fmt.Sprintf("%s(UTC+0000) New publish! (from: %s)\n%s", dateFormat(data.Channel.Date), purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Link))
 			}
 			emb := new(SlackAttachment)
 			emb.Title = purgeHTML(data.Item[idx].Title)
 			emb.Text = purgeHTML(data.Item[idx].Description)
 			emb.TitleLink = purgeHTML(data.Item[idx].Link)
 			emb.Color = S_INFO
-			emb.Footer = fmt.Sprintf("%s\n%s\n%s", dateFormat(data.Item[idx].Date), purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Description))
+			emb.Footer = fmt.Sprintf("%s(UTC+0000)\n%s\n%s", dateFormat(data.Item[idx].Date), purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Description))
 
 			s.Attachments = append(s.Attachments, emb)
 		}
@@ -508,14 +508,14 @@ func (s *SlackWebhook) parseRss2(data *Rss2, latestRead time.Time, username stri
 			if s.Text == "" {
 				s.UserName = username
 				s.IconEmoji = icon
-				s.Text = fmt.Sprintf("%s New publish! (from: %s)\n%s", dateFormat(data.Channel.PubDate), purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Link))
+				s.Text = fmt.Sprintf("%s(UTC+0000) New publish! (from: %s)\n%s", dateFormat(data.Channel.PubDate), purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Link))
 			}
 			emb := new(SlackAttachment)
 			emb.Title = purgeHTML(data.Channel.Item[idx].Title)
 			emb.Text = purgeHTML(data.Channel.Item[idx].Description)
 			emb.TitleLink = purgeHTML(data.Channel.Item[idx].Link)
 			emb.Color = S_INFO
-			emb.Footer = fmt.Sprintf("%s\n%s\n%s\n%s", dateFormat(data.Channel.Item[idx].PubDate), purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Description), purgeHTML(data.Channel.Creator))
+			emb.Footer = fmt.Sprintf("%s(UTC+0000)\n%s\n%s\n%s", dateFormat(data.Channel.Item[idx].PubDate), purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Description), purgeHTML(data.Channel.Creator))
 
 			s.Attachments = append(s.Attachments, emb)
 		}
@@ -530,14 +530,14 @@ func (s *SlackWebhook) parseAtom(data *Atom, latestRead time.Time, username stri
 			if s.Text == "" {
 				s.UserName = username
 				s.IconEmoji = icon
-				s.Text = fmt.Sprintf("%s New publish! (from: %s)\n%s", dateFormat(data.Updated), purgeHTML(data.Title), purgeHTML(data.Author.Url))
+				s.Text = fmt.Sprintf("%s(UTC+0000) New publish! (from: %s)\n%s", dateFormat(data.Updated), purgeHTML(data.Title), purgeHTML(data.Author.Url))
 			}
 			emb := new(SlackAttachment)
 			emb.Title = purgeHTML(data.Entry[idx].Title)
 			emb.Text = purgeHTML(data.Entry[idx].Content)
 			emb.TitleLink = purgeHTML(data.Entry[idx].Link.Href)
 			emb.Color = S_INFO
-			emb.Footer = fmt.Sprintf("%s\n%s\n%s", dateFormat(data.Entry[idx].Updated), purgeHTML(data.Title), purgeHTML(data.Subtitle))
+			emb.Footer = fmt.Sprintf("%s(UTC+0000)\n%s\n%s", dateFormat(data.Entry[idx].Updated), purgeHTML(data.Title), purgeHTML(data.Subtitle))
 
 			s.Attachments = append(s.Attachments, emb)
 		}
@@ -574,7 +574,7 @@ func dateFormat(str string) (ret string) {
 	if _, err := time.Parse(time.RFC3339Nano, str); err == nil {
 		t, _ = time.Parse(time.RFC3339Nano, str)
 	}
-	ret = t.Format(YYYYMMDDHH24MISS)
+	ret = t.UTC().Format(YYYYMMDDHH24MISS)
 	return
 }
 
