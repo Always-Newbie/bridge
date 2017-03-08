@@ -73,7 +73,7 @@ type Rss2Image struct {
 type Rss2Item struct {
 	Title       string `xml:"title"`
 	Link        string `xml:"link"`
-	Author      string `xml;"author"`
+	Author      string `xml:"author"`
 	Description string `xml:"description"`
 	PubDate     string `xml:"pubDate"`
 }
@@ -180,7 +180,7 @@ type Footer struct {
 type Field struct {
 	Name   string `json:"name,omitempty"`   // name of the field
 	Value  string `json:"value,omitempty"`  // value of the field
-	inline bool   `json:"inline,omitempty"` // whether or not this field should display inline
+	Inline bool   `json:"inline,omitempty"` // whether or not this field should display inline
 }
 
 //type DiscordAttachment struct {
