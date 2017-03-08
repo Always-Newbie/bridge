@@ -88,9 +88,9 @@ $ ./bridge [option:-config=(setting file path. default is "./settings.json")]
 // crontab image
 
 $ crontab -l
-*/10 * * * * ./bridge -config=planA.json
-* 5 * * * ./bridge -config=planB.json
-* * 1 * * ./bridge -config=planC.json
+*/10 * * * * user /xxx/bridge -config=planA.json
+* 5 * * * user /xxx/bridge -config=planB.json
+* * 1 * * user /xxx/bridge -config=planC.json
 ```
 
 ### Appendix: json image for Discord Webhook
