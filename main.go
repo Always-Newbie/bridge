@@ -292,9 +292,9 @@ func main() {
 	c.readSettingsJson()
 	t := time.Now().UTC().Format(YYYYMMDDHH24MISS)
 
-	for hooks, _ := range c.Deliveries {
+	for hooks := range c.Deliveries {
 		if c.Deliveries[hooks].Post {
-			for idx, _ := range c.Feeds {
+			for idx := range c.Feeds {
 				if c.Feeds[idx].Read {
 					t, _ := time.Parse(YYYYMMDDHH24MISS, c.Feeds[idx].Timestamp)
 					readFeed(c.Feeds[idx].Url, t, c.Deliveries[hooks].Url, c.Deliveries[hooks].Type, c.Deliveries[hooks].UserName, c.Deliveries[hooks].Icon)
@@ -405,7 +405,7 @@ func purgeHTML(eval string) (ret string) {
 
 // Parse RSS1.0 feed for DiscordWebhook structure
 func (d *DiscordWebhook) parseRss1(data *Rss1, latestRead time.Time, username string, icon string) {
-	for idx, _ := range data.Item {
+	for idx := range data.Item {
 		thisEmbedPublished, _ := time.Parse(YYYYMMDDHH24MISS, dateFormat(data.Item[idx].Date))
 		if latestRead.Before(thisEmbedPublished) {
 			if d.Content == "" {
@@ -430,7 +430,7 @@ func (d *DiscordWebhook) parseRss1(data *Rss1, latestRead time.Time, username st
 
 // Parse RSS2.0 feed for DiscordWebhook structure
 func (d *DiscordWebhook) parseRss2(data *Rss2, latestRead time.Time, username string, icon string) {
-	for idx, _ := range data.Channel.Item {
+	for idx := range data.Channel.Item {
 		thisEmbedPublished, _ := time.Parse(YYYYMMDDHH24MISS, dateFormat(data.Channel.Item[idx].PubDate))
 		if latestRead.Before(thisEmbedPublished) {
 			if d.Content == "" {
@@ -455,7 +455,7 @@ func (d *DiscordWebhook) parseRss2(data *Rss2, latestRead time.Time, username st
 
 // Parse Atom feed for DiscordWebhook structure
 func (d *DiscordWebhook) parseAtom(data *Atom, latestRead time.Time, username string, icon string) {
-	for idx, _ := range data.Entry {
+	for idx := range data.Entry {
 		thisEmbedPublished, _ := time.Parse(YYYYMMDDHH24MISS, dateFormat(data.Entry[idx].Updated))
 		if latestRead.Before(thisEmbedPublished) {
 			if d.Content == "" {
@@ -480,7 +480,7 @@ func (d *DiscordWebhook) parseAtom(data *Atom, latestRead time.Time, username st
 
 // Parse RSS1.0 feed for SlackWebhook structure
 func (s *SlackWebhook) parseRss1(data *Rss1, latestRead time.Time, username string, icon string) {
-	for idx, _ := range data.Item {
+	for idx := range data.Item {
 		thisEmbedPublished, _ := time.Parse(YYYYMMDDHH24MISS, dateFormat(data.Item[idx].Date))
 		if latestRead.Before(thisEmbedPublished) {
 			if s.Text == "" {
@@ -502,7 +502,7 @@ func (s *SlackWebhook) parseRss1(data *Rss1, latestRead time.Time, username stri
 
 // Parse RSS2.0 feed for SlackWebhook structure
 func (s *SlackWebhook) parseRss2(data *Rss2, latestRead time.Time, username string, icon string) {
-	for idx, _ := range data.Channel.Item {
+	for idx := range data.Channel.Item {
 		thisEmbedPublished, _ := time.Parse(YYYYMMDDHH24MISS, dateFormat(data.Channel.Item[idx].PubDate))
 		if latestRead.Before(thisEmbedPublished) {
 			if s.Text == "" {
@@ -524,7 +524,7 @@ func (s *SlackWebhook) parseRss2(data *Rss2, latestRead time.Time, username stri
 
 // Parse Atom feed for SlackWebhook structure
 func (s *SlackWebhook) parseAtom(data *Atom, latestRead time.Time, username string, icon string) {
-	for idx, _ := range data.Entry {
+	for idx := range data.Entry {
 		thisEmbedPublished, _ := time.Parse(YYYYMMDDHH24MISS, dateFormat(data.Entry[idx].Updated))
 		if latestRead.Before(thisEmbedPublished) {
 			if s.Text == "" {
