@@ -129,13 +129,13 @@ type Embed struct {
 	Url         string     `json:"url,omitempty"`         // url of embed
 	Timestamp   string     `json:"timestamp,omitempty"`   // timestamp for embed content
 	Color       int        `json:"color,omitempty"`       // color code of the embed (value is not HEX. value is integer. (R*256*256) * (G*256) * B = value  ex R:151 G237 B83 = 9956691（HEX is #97ED53)  )
-	Footers     *Footer    `json:"footer,omitempty"`      // embed footer object footer infomation
-	Images      *Image     `json:"image,omitempty"`       // embed image object image infomation
-	Thumbnails  *Thumbnail `json:"thumbnail,omitempty"`   // embed thumbnail object thumbnail infomation
-	Videos      *Video     `json:"video,omitempty"`       // embed video object video infomation
-	Providers   *Provider  `json:"provider,omitempty"`    // embed provider object provider infomation
-	Authors     *Author    `json:"author,omitempty"`      // embed author object author infomation
-	Fields      []*Field   `json:"fields,omitempty"`      // array of embed field object field infomation
+	Footers     *Footer    `json:"footer,omitempty"`      // embed footer object footer information
+	Images      *Image     `json:"image,omitempty"`       // embed image object image information
+	Thumbnails  *Thumbnail `json:"thumbnail,omitempty"`   // embed thumbnail object thumbnail information
+	Videos      *Video     `json:"video,omitempty"`       // embed video object video information
+	Providers   *Provider  `json:"provider,omitempty"`    // embed provider object provider information
+	Authors     *Author    `json:"author,omitempty"`      // embed author object author information
+	Fields      []*Field   `json:"fields,omitempty"`      // array of embed field object field information
 }
 
 //for Embeds struct
