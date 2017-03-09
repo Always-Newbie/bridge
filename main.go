@@ -291,7 +291,7 @@ func main() {
 	c := new(Config)
 	c.readSettingsJson()
 	rt := time.Now().UTC().Format(YYYYMMDDHH24MISS)
-	
+
 	for hooks := range c.Deliveries {
 		if c.Deliveries[hooks].Post {
 			for idx := range c.Feeds {
@@ -303,7 +303,7 @@ func main() {
 			}
 		}
 	}
-	
+
 	c.writeSettingsJson()
 }
 
@@ -412,7 +412,7 @@ func (d *DiscordWebhook) parseRss1(data *Rss1, latestRead time.Time, username st
 			if d.Content == "" {
 				d.UserName = username
 				d.AvatarUrl = icon
-				d.Content = fmt.Sprintf("%s(UTC+0000) New publish! (from: %s)\n%s", dateFormat(data.Channel.Date), purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Link))
+				d.Content = fmt.Sprintf("New publish! (from: %s)\n%s", purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Link))
 			}
 			emb := new(Embed)
 			emb.Title = purgeHTML(data.Item[idx].Title)
@@ -437,7 +437,7 @@ func (d *DiscordWebhook) parseRss2(data *Rss2, latestRead time.Time, username st
 			if d.Content == "" {
 				d.UserName = username
 				d.AvatarUrl = icon
-				d.Content = fmt.Sprintf("%s(UTC+0000) New publish! (from: %s)\n%s", dateFormat(data.Channel.PubDate), purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Link))
+				d.Content = fmt.Sprintf("New publish! (from: %s)\n%s", purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Link))
 			}
 			emb := new(Embed)
 			emb.Title = purgeHTML(data.Channel.Item[idx].Title)
@@ -462,7 +462,7 @@ func (d *DiscordWebhook) parseAtom(data *Atom, latestRead time.Time, username st
 			if d.Content == "" {
 				d.UserName = username
 				d.AvatarUrl = icon
-				d.Content = fmt.Sprintf("%s(UTC+0000) New publish! (from: %s)\n%s", dateFormat(data.Updated), purgeHTML(data.Title), purgeHTML(data.Author.Url))
+				d.Content = fmt.Sprintf("New publish! (from: %s)\n%s", purgeHTML(data.Title), purgeHTML(data.Author.Url))
 			}
 			emb := new(Embed)
 			emb.Title = purgeHTML(data.Entry[idx].Title)
@@ -487,7 +487,7 @@ func (s *SlackWebhook) parseRss1(data *Rss1, latestRead time.Time, username stri
 			if s.Text == "" {
 				s.UserName = username
 				s.IconEmoji = icon
-				s.Text = fmt.Sprintf("%s(UTC+0000) New publish! (from: %s)\n%s", dateFormat(data.Channel.Date), purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Link))
+				s.Text = fmt.Sprintf("New publish! (from: %s)\n%s", purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Link))
 			}
 			emb := new(SlackAttachment)
 			emb.Title = purgeHTML(data.Item[idx].Title)
@@ -509,7 +509,7 @@ func (s *SlackWebhook) parseRss2(data *Rss2, latestRead time.Time, username stri
 			if s.Text == "" {
 				s.UserName = username
 				s.IconEmoji = icon
-				s.Text = fmt.Sprintf("%s(UTC+0000) New publish! (from: %s)\n%s", dateFormat(data.Channel.PubDate), purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Link))
+				s.Text = fmt.Sprintf("New publish! (from: %s)\n%s", purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Link))
 			}
 			emb := new(SlackAttachment)
 			emb.Title = purgeHTML(data.Channel.Item[idx].Title)
@@ -531,7 +531,7 @@ func (s *SlackWebhook) parseAtom(data *Atom, latestRead time.Time, username stri
 			if s.Text == "" {
 				s.UserName = username
 				s.IconEmoji = icon
-				s.Text = fmt.Sprintf("%s(UTC+0000) New publish! (from: %s)\n%s", dateFormat(data.Updated), purgeHTML(data.Title), purgeHTML(data.Author.Url))
+				s.Text = fmt.Sprintf("New publish! (from: %s)\n%s", purgeHTML(data.Title), purgeHTML(data.Author.Url))
 			}
 			emb := new(SlackAttachment)
 			emb.Title = purgeHTML(data.Entry[idx].Title)
@@ -547,7 +547,7 @@ func (s *SlackWebhook) parseAtom(data *Atom, latestRead time.Time, username stri
 
 // publish date format method  ( out string YYYY/MM/DD hh24:mi:ss )
 func dateFormat(str string) (ret string) {
-	t := time.Now() // t init
+	t := time.Time{} // t init
 	if _, err := time.Parse(time.UnixDate, str); err == nil {
 		t, _ = time.Parse(time.UnixDate, str)
 	}
