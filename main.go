@@ -71,11 +71,16 @@ type Rss2Image struct {
 }
 
 type Rss2Item struct {
-	Title       string `xml:"title"`
-	Link        string `xml:"link"`
-	Author      string `xml:"author"`
-	Description string `xml:"description"`
-	PubDate     string `xml:"pubDate"`
+	Title       string            `xml:"title"`
+	Link        string            `xml:"link"`
+	Author      string            `xml:"author"`
+	Description string            `xml:"description"`
+	Enclosure   Rss2ItemEnclosure `xml:"enclosure"`
+	PubDate     string            `xml:"pubDate"`
+}
+
+type Rss2ItemEnclosure struct {
+	Url string `xml:"url,attr"` // Thumbnail image
 }
 
 //Atom
@@ -292,15 +297,15 @@ func main() {
 	c.readSettingsJson()
 	rt := time.Now().UTC().Format(YYYYMMDDHH24MISS)
 
-	for hooks := range c.Deliveries {
-		if c.Deliveries[hooks].Post {
-			for idx := range c.Feeds {
-				if c.Feeds[idx].Read {
+	for idx := range c.Feeds {
+		if c.Feeds[idx].Read {
+			for hooks := range c.Deliveries {
+				if c.Deliveries[hooks].Post {
 					ts, _ := time.Parse(YYYYMMDDHH24MISS, c.Feeds[idx].Timestamp)
 					readFeed(c.Feeds[idx].Url, ts, c.Deliveries[hooks].Url, c.Deliveries[hooks].Type, c.Deliveries[hooks].UserName, c.Deliveries[hooks].Icon)
-					c.Feeds[idx].Timestamp = rt
 				}
 			}
+			c.Feeds[idx].Timestamp = rt
 		}
 	}
 
@@ -445,6 +450,12 @@ func (d *DiscordWebhook) parseRss2(data *Rss2, latestRead time.Time, username st
 			emb.Url = purgeHTML(data.Channel.Item[idx].Link)
 			emb.Color = D_INFO
 
+			if e, _ := regexp.MatchString(`https?:\/\/.+\.(?:png|jpg|jpeg)`, data.Channel.Item[idx].Enclosure.Url); e {
+				img := new(Image)
+				img.Url = data.Channel.Item[idx].Enclosure.Url
+				emb.Images = img
+			}
+
 			foot := new(Footer)
 			foot.Text = fmt.Sprintf("%s(UTC+0000)\n%s\n%s\n%s", dateFormat(data.Channel.Item[idx].PubDate), purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Description), purgeHTML(data.Channel.Creator))
 			emb.Footers = foot
@@ -517,6 +528,10 @@ func (s *SlackWebhook) parseRss2(data *Rss2, latestRead time.Time, username stri
 			emb.TitleLink = purgeHTML(data.Channel.Item[idx].Link)
 			emb.Color = S_INFO
 			emb.Footer = fmt.Sprintf("%s(UTC+0000)\n%s\n%s\n%s", dateFormat(data.Channel.Item[idx].PubDate), purgeHTML(data.Channel.Title), purgeHTML(data.Channel.Description), purgeHTML(data.Channel.Creator))
+
+			if e, _ := regexp.MatchString(`https?:\/\/.+\.(?:png|jpg|jpeg)`, data.Channel.Item[idx].Enclosure.Url); e {
+				emb.ImageUrl = data.Channel.Item[idx].Enclosure.Url
+			}
 
 			s.Attachments = append(s.Attachments, emb)
 		}
