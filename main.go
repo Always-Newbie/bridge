@@ -290,7 +290,6 @@ func main() {
 
 	c := new(Config)
 	c.readSettingsJson()
-	t := time.Now().UTC().Format(YYYYMMDDHH24MISS)
 
 	for hooks := range c.Deliveries {
 		if c.Deliveries[hooks].Post {
@@ -299,10 +298,11 @@ func main() {
 					t, _ := time.Parse(YYYYMMDDHH24MISS, c.Feeds[idx].Timestamp)
 					readFeed(c.Feeds[idx].Url, t, c.Deliveries[hooks].Url, c.Deliveries[hooks].Type, c.Deliveries[hooks].UserName, c.Deliveries[hooks].Icon)
 				}
-				c.Feeds[idx].Timestamp = t
+				c.Feeds[idx].Timestamp = time.Now().UTC().Format(YYYYMMDDHH24MISS)
 			}
 		}
 	}
+	
 	c.writeSettingsJson()
 }
 
