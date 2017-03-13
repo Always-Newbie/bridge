@@ -334,6 +334,8 @@ func readFeed(url string, latestRead time.Time, webhookUrl string, webhookType s
 			s := new(SlackWebhook)
 			s.parseRss1(data, latestRead, username, icon)
 			postWebhook(webhookUrl, webhookType, s.marshal())
+		default:
+			fmt.Println(`Webhook type unmatch error. Please check settings json file.(ex: deliveries section, "type": "discord" or "type": "slack")`)
 		}
 	}
 
@@ -354,6 +356,8 @@ func readFeed(url string, latestRead time.Time, webhookUrl string, webhookType s
 			s := new(SlackWebhook)
 			s.parseRss2(data, latestRead, username, icon)
 			postWebhook(webhookUrl, webhookType, s.marshal())
+		default:
+			fmt.Println(`Webhook type unmatch error. Please check settings json file.(ex: deliveries section, "type": "discord" or "type": "slack")`)
 		}
 	}
 
@@ -374,6 +378,8 @@ func readFeed(url string, latestRead time.Time, webhookUrl string, webhookType s
 			s := new(SlackWebhook)
 			s.parseAtom(data, latestRead, username, icon)
 			postWebhook(webhookUrl, webhookType, s.marshal())
+		default:
+			fmt.Println(`Webhook type unmatch error. Please check settings json file.(ex: deliveries section, "type": "discord" or "type": "slack")`)
 		}
 	}
 }
