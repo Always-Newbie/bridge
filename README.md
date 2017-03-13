@@ -37,7 +37,7 @@ go build
 ・`deliveries` is webhooks setting.  
   --・`url` is webhook url.  
   --・`username` is post username.  
-  --・`icon` is post avatar icon. (case discord, url string) 
+  --・`icon` is post avatar icon. (case discord, url string)   
   --・`type` is webhook type. ("discord" or "slack")  
   --・`post` is can do post flag.  
   ・`feeds` is RSS feeds setting.  
