@@ -37,12 +37,12 @@ go build
 ・`deliveries` is webhooks setting.  
   --・`url` is webhook url.  
   --・`username` is post username.  
-  --・`icon` is post avatar icon.  
+  --・`icon` is post avatar icon. (case discord, url string) 
   --・`type` is webhook type. ("discord" or "slack")  
   --・`post` is can do post flag.  
   ・`feeds` is RSS feeds setting.  
   --・`url` is RSS feed url.  
-  --・`timestamp` is latest read UTC+0000 timestamp. (YYYY/MM/DD HH24:MI:SS) *AUTO UPDATE!  
+  --・`timestamp` is latest read UTC+0000 timestamp. (YYYY/MM/DD HH24:MI:SS) *RUN TIME AUTO UPDATE!  
   --・`read` is can do read flag.
 
 ```json
